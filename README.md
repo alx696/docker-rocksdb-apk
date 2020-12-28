@@ -1,17 +1,19 @@
 ## 说明
 
-包含RocksDB的apk安装包的镜像：
+Alpine的已经提供rocksdb安装包，但是不支持老CPU（SSE4.2）。此镜像使用RocksDB官方源码，通过编译时设置`PORTABLE=1`来关闭SSE4.2。另外一个优势apk包形式的rocksdb体积非常小，是共享库（so）的百分之一。
+
+RocksDB的apk安装包路径为：
 
 * `/rocksdb-dev.apk`
 * `/rocksdb.apk`
 
-### 构建
+### 构建镜像
 
 ```
 $ docker build -t registry.cn-shanghai.aliyuncs.com/xm69/alpine-rocksdb-apk .
 ```
 
-### 使用
+### 使用apk
 
 在Dockerfile前面增加构建阶段：
 ```
