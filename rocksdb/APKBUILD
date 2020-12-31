@@ -17,16 +17,16 @@ source="$pkgname-$pkgver.tar.gz::https://xm.lilu.red:444/soft/rocksdb-$pkgver.ta
 	10-support-busybox-install.patch
 	"
 build() {
-		PORTABLE=1 \
-	make -j32 \
-		shared_lib \
-		DISABLE_WARNING_AS_ERROR=1
+	PORTABLE=1 \
+	make -j32 shared_lib \
+	DISABLE_WARNING_AS_ERROR=1
 }
 
 package() {
-		DESTDIR="$pkgdir" \
-		PREFIX=/usr \
-		LIBDIR=/usr/lib make install-shared
+	DESTDIR="$pkgdir" \
+	PREFIX=/usr \
+	LIBDIR=/usr/lib \
+	make install-shared
 	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 	install -Dm644 LICENSE.Apache "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.Apache
 	mkdir -p "$pkgdir"/usr/share/doc
