@@ -32,4 +32,4 @@ RUN set -eux && \
   apk add --update --no-cache --allow-untrusted rocksdb.apk && \
   rm rocksdb.apk
 ```
-> 如果是编译Golang应用，应该复制安装rocksdb-dev.apk。
+> 如果是编译Golang应用，应该同时复制安装rocksdb.apk和rocksdb-dev.apk。
